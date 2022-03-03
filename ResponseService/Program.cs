@@ -21,11 +21,11 @@ app.MapGet("/response/{id:int}", (int id) =>
     if (new Random().Next(1, 100) >= id)
     {
         Console.WriteLine("---> Failure - Generate a HTTP 500");
-        return StatusCodes.Status500InternalServerError;
+        return Results.StatusCode(StatusCodes.Status500InternalServerError);
     }
 
     Console.WriteLine("---> Success - Generate a HTTP 200");
-    return StatusCodes.Status200OK;
+    return Results.StatusCode(StatusCodes.Status200OK);
 })
 .WithName("GetResponse");
 
